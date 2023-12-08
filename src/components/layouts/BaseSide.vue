@@ -6,12 +6,17 @@
     @open="handleOpen"
     @close="handleClose"
   >
+    <el-menu-item index="0">
+      <el-button type="primary" :icon="isCollapse?Fold:Expand" @click="isCollapse=!isCollapse" size="large" style="width:40px; margin: 0; margin-left: -8px;"/>
+    </el-menu-item>
     <el-sub-menu index="1">
       <template #title>
         <el-icon><location /></el-icon>
         <span>Navigator One</span>
       </template>
-      <el-menu-item-group>
+      <el-menu-item index="1-1">item one</el-menu-item>
+      <el-menu-item index="1-2">item two</el-menu-item>
+      <!-- <el-menu-item-group>
         <template #title><span>Group One</span></template>
         <el-menu-item index="1-1">item one</el-menu-item>
         <el-menu-item index="1-2">item two</el-menu-item>
@@ -22,13 +27,13 @@
       <el-sub-menu index="1-4">
         <template #title><span>item four</span></template>
         <el-menu-item index="1-4-1">item one</el-menu-item>
-      </el-sub-menu>
+      </el-sub-menu> -->
     </el-sub-menu>
     <el-menu-item index="2">
       <el-icon><icon-menu /></el-icon>
       <template #title>Navigator Two</template>
     </el-menu-item>
-    <el-menu-item index="3" disabled>
+    <el-menu-item index="3">
       <el-icon><document /></el-icon>
       <template #title>Navigator Three</template>
     </el-menu-item>
@@ -46,13 +51,23 @@ import {
   Document,
   Menu as IconMenu,
   Setting,
+  Fold,
+  Expand,
 } from "@element-plus/icons-vue";
 
-const isCollapse = ref(true);
+const isCollapse = ref(false);
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
+
 };
 const handleClose = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
 </script>
+
+<style>
+/* .el-menu-vertical-demo:not(.el-menu--collapse) {
+  width: 200px;
+  min-height: 400px;
+} */
+</style>
